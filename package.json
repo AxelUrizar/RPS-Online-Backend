@@ -3,14 +3,25 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "nodemon --inspect ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1"
-  }
+    "jade": "^1.9.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.2",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.20",
+    "socket.io": "^4.5.4"
+  },
+  "main": "app.js",
+  "author": "Axel Urizar Martin <axelurizarmartin@gmail.com>",
+  "repository": "https://github.com/AxelUrizar/RPS-Online-Backend.git"
 }
