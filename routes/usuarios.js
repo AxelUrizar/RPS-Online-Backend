@@ -9,13 +9,18 @@ const usuarioControllers = require('../controllers/usuarioControllers.js')
 router.get('/', usuarioControllers.listaUsuarios)
 
 //
+// Perfil de Usuario
+//
+router.get('/perfil/:id', usuarioControllers.perfilUsuario)
+
+//
 // Creación de Usuario
 //
 router.post('/signUp', usuarioControllers.crearUsuario)
 
 //
-// Perfil de Usuario
+// Login de Usuario
 //
-router.get('/perfil/:id', usuarioControllers.perfilUsuario)
+router.post('/login', usuarioControllers.login)
 
 module.exports = router;
