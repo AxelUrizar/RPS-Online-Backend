@@ -79,3 +79,17 @@ exports.login = async(req, res) => {
         return res.status(500).json(e)
     }
 }
+
+//
+// Borra a un usuario y sus tokens.
+//
+exports.borrarUsuario = async(req, res) => {
+    try {
+        const borrarUsuario = await Usuario.findByIdAndDelete(req.usuario._id)
+        console.log(borrarUsuario)
+
+        return res.status(200).json('Usuario eliminado con éxito.')
+    } catch (e) {
+        return res.status(500).json(e)
+    }
+}

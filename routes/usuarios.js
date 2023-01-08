@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-const usuarioControllers = require('../controllers/usuarioControllers.js')
+const auth = require('../middlewares/auth.js');
+const usuarioControllers = require('../controllers/usuarioControllers.js');
 
 //
 // Listado de todos los usuarios
@@ -22,5 +23,10 @@ router.post('/signUp', usuarioControllers.crearUsuario)
 // Login de Usuario
 //
 router.post('/login', usuarioControllers.login)
+
+//
+// Borrar el usuario usando el token.
+//
+router.delete('/borrarUsuario', auth, usuarioControllers.borrarUsuario)
 
 module.exports = router;
