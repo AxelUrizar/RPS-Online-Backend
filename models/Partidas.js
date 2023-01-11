@@ -3,14 +3,8 @@ const mongoose = require('mongoose')
 
 const PartidaSchema = new mongoose.Schema({
     jugadores: [{
-        jugador1: {
-            type: mongoose.Types.ObjectId,
-            required: true
-        },
-        jugador2: {
-            type: mongoose.Types.ObjectId,
-            required: true
-        },
+        type: mongoose.Types.ObjectId,
+        required: true
     }],
     ganador: {
         type: mongoose.Types.ObjectId,
