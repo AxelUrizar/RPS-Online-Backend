@@ -41,13 +41,20 @@ exports.perfilUsuario = async(req, res) => {
 //
 exports.crearUsuario = async(req, res) => {
     try{
-        const { alias, contraseña } = req.body
+        const { alias, email, contraseña } = req.body
 
         if(alias.length < 1) return res.status(401).json('El nombre debe contener almenos un carácter.')
+        if(!email) return res.status(401).json('Es necesario introducir un email.')
         if(contraseña.length < 5) return res.status(401).json('La contraseña debe contener almenos 5 carácteres.')
 
+        const comprobacionAlias = await Usuario.find({ alias: alias})
+        if(comprobacionAlias.length > 0) return res.status(401).json('El alias deseado ya está en uso.')
+
+        const comprobacionEmail = await Usuario.find({ email: email})
+        if(comprobacionEmail.length > 0) return res.status(401).json('El email deseado ya está en uso.')
+
         const contraseñaEncriptada = await bcrypt.hash(contraseña, 8)
-        const nuevoUsuario = await Usuario.create({ alias: alias, contraseña: contraseñaEncriptada })
+        const nuevoUsuario = await Usuario.create({ alias: alias, email: email, contraseña: contraseñaEncriptada })
 
         return res.status(200).json(nuevoUsuario)
     } catch(e) {
